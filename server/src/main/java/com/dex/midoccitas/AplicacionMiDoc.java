@@ -4,10 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MidoccitasApplication {
+public class AplicacionMiDoc {
 
-	public static void main(String[] args) {
-		SpringApplication.run(MidoccitasApplication.class, args);
-	}
-
+    public static void main(String[] argumentos) {
+        SpringApplication.run(AplicacionMiDoc.class, argumentos);
+    }
 }
