@@ -3,17 +3,17 @@
 Sistema web de MiDoc para la gestión administrativa de consultas y citas
 médicas, desarrollado para Análisis y Diseño de Sistemas de Información.
 
-Esta etapa prepara el entorno de desarrollo. El cliente muestra una pantalla
-inicial y una página para rutas desconocidas. El servidor expone únicamente
-la comprobación de estado; las demás rutas permanecen bloqueadas.
+Esta etapa prepara el entorno de desarrollo con React, Flask y Supabase.
+El cliente muestra una pantalla inicial y una página para rutas desconocidas.
+El servidor implementa únicamente la comprobación de estado del proceso web.
 
 ## Organización
 
 | Carpeta | Contenido |
 | --- | --- |
 | `client` | React, TypeScript, Vite, Bootstrap, React Router y TanStack Query. |
-| `server` | Java 21, Spring Boot 4.1.1, Spring Security, validación, JPA, PostgreSQL y Flyway. |
-| `db` | Indicaciones de trabajo con la base de datos; todavía no hay tablas del negocio. |
+| `server` | Python, Flask, python-dotenv y el SDK oficial de Supabase. |
+| `db` | Indicaciones para trabajar con PostgreSQL administrado por Supabase. |
 
 El código se mantiene en `C:\Proyectos\midoc-citas`. Los informes, diagramas,
 videos y entregables del curso corresponden a la carpeta académica
@@ -21,14 +21,15 @@ videos y entregables del curso corresponden a la carpeta académica
 
 ## Requisitos
 
-- JDK 21 y `JAVA_HOME` apuntando a su instalación.
+- Python 3.14 recomendado; el proyecto admite Python 3.12 a 3.14.
 - Node.js 24 LTS recomendado; también se admite Node.js 22.12 o posterior de la rama 22.
 - npm 10 o posterior.
-- PostgreSQL cuando se active el perfil `postgres`.
+- Un proyecto de Supabase cuando se configure el acceso al servicio.
 
-El Maven Wrapper está incluido en `server`; descarga la distribución
-configurada durante su primera ejecución. No se necesita instalar Maven
-globalmente. La primera instalación requiere acceso a Maven Central y npm.
+El entorno verificado usa Python 3.14.7. Las dependencias del servidor se
+declaran en `server/pyproject.toml` y sus versiones resueltas se registran en
+`server/requirements.lock`. La instalación inicial requiere acceso a PyPI
+y npm.
 
 ## Arranque local
 
@@ -36,14 +37,16 @@ En una terminal de PowerShell:
 
 ```powershell
 Set-Location C:\Proyectos\midoc-citas\server
-.\mvnw.cmd spring-boot:run
+py -3.14 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.lock -e ".[dev]"
+.\.venv\Scripts\python.exe -m flask run
 ```
 
-El perfil predeterminado `local` arranca sin conectarse a PostgreSQL. La
-comprobación de estado está en
+El modo predeterminado `local` arranca sin credenciales ni llamadas a
+Supabase. La comprobación de estado está en
 [http://127.0.0.1:8080/api/estado](http://127.0.0.1:8080/api/estado).
-Un resultado `UP` en este perfil confirma el proceso web, sin acreditar
-una conexión a base de datos.
+Un resultado `UP` confirma el proceso Flask, sin acreditar una conexión
+con Supabase. `.flaskenv` configura la dirección local y el puerto 8080.
 
 En otra terminal:
 
@@ -57,22 +60,31 @@ Abrir [http://127.0.0.1:5173](http://127.0.0.1:5173). Las solicitudes a
 `/api` pasan al backend mediante el proxy de Vite. Los puertos son fijos:
 si están ocupados, el proceso informa el conflicto.
 
-## Conexión a PostgreSQL
+## Configuración de Supabase
 
-El perfil `postgres` requiere una base y un usuario ya preparados. Para
-configurarlo, consultar `server/README.md`. No se han creado credenciales,
-usuarios, tablas, registros ni migraciones del negocio.
+El recorrido previsto es React → Flask mediante `/api` → Supabase mediante
+su SDK de Python. Las variables del servidor son `MIDOC_MODO`,
+`SUPABASE_URL` y `SUPABASE_PUBLISHABLE_KEY`. Para inicializar el SDK se
+activa el modo `supabase`, según `server/README.md`.
 
-Los archivos `.env` están excluidos de Git. Sus ejemplos sin secretos sí
-se versionan. El `.env` del servidor se interpreta como `.properties`;
-no es un script de PowerShell ni un archivo para ejecutar.
+Los archivos `.env` están excluidos de Git y sus ejemplos sin valores
+reales sí se versionan. El cliente conserva React con TypeScript y el proxy
+actual; todavía no utiliza directamente el SDK de Supabase.
+
+La inicialización del SDK valida la configuración y crea el cliente local.
+La conectividad real, el esquema, las políticas RLS, la autenticación y las
+operaciones del negocio quedan pendientes. No se han creado recursos ni
+se han realizado escrituras en Supabase.
 
 ## Comprobaciones
 
 Desde `server`:
 
 ```powershell
-.\mvnw.cmd verify
+.\.venv\Scripts\python.exe -m pytest
+.\.venv\Scripts\python.exe -m ruff check .
+.\.venv\Scripts\python.exe -m ruff format --check .
+.\.venv\Scripts\python.exe -m pip check
 ```
 
 Desde `client`:
@@ -83,15 +95,15 @@ npm run typecheck
 npm run build
 ```
 
-Las pruebas del servidor levantan HTTP en un puerto aleatorio y comprueban
-el estado público, el bloqueo de rutas y el rechazo de escrituras sin CSRF.
-No requieren PostgreSQL. La conexión del perfil `postgres` deberá verificarse
-cuando se disponga de la base y sus credenciales.
+Las pruebas del servidor comprueban la configuración, el contrato HTTP
+inicial, los errores JSON y la creación local del cliente Supabase. Usan
+el cliente de pruebas de Flask y valores de prueba, sin consultar el servicio.
 
 ## Referencias técnicas
 
-- [Configuración externa de Spring Boot](https://docs.spring.io/spring-boot/reference/features/external-config.html).
-- [Inicialización con Flyway](https://docs.spring.io/spring-boot/how-to/data-initialization.html).
+- [Fábrica de aplicaciones Flask](https://flask.palletsprojects.com/en/stable/patterns/appfactories/).
+- [Inicialización del SDK Python de Supabase](https://supabase.com/docs/reference/python/initializing).
+- [Claves de API de Supabase](https://supabase.com/docs/guides/api/api-keys).
 - [Guía de Vite](https://vite.dev/guide/).
 
 La autenticación, los permisos por rol y los módulos de pacientes, consultas,
