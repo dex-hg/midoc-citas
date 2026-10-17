@@ -1,0 +1,130 @@
+.pagina-acceso {
+  background: #f8fafb;
+}
+.pagina-acceso .cabecera-publica {
+  border: 0;
+}
+.contenido-acceso {
+  max-width: 930px;
+  margin: 45px auto 0;
+  padding: 0 30px 70px;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  align-items: center;
+  gap: 75px;
+}
+.introduccion-acceso h2 {
+  font-size: 31px;
+  line-height: 1.4;
+  margin-bottom: 15px;
+}
+.introduccion-acceso > p:not(.antetitulo) {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--suave);
+  margin-bottom: 38px;
+}
+.detalle-acceso {
+  display: flex;
+  gap: 16px;
+  margin-top: 27px;
+  color: var(--suave);
+}
+.detalle-acceso strong {
+  font-size: 14px;
+  color: #4c6576;
+  font-weight: 600;
+}
+.detalle-acceso p {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--suave);
+}
+.introduccion-acceso > small {
+  display: block;
+  margin-top: 60px;
+  font-size: 11px;
+  color: var(--suave);
+}
+.formulario-acceso {
+  border: 1px solid var(--borde);
+  border-radius: 9px;
+  background: white;
+  padding: 32px;
+}
+.formulario-acceso > h1 {
+  margin-top: 17px;
+  font-size: 24px;
+}
+.formulario-acceso > p {
+  color: var(--suave);
+  font-size: 13px;
+  margin: 10px 0 21px;
+}
+.aviso-formulario {
+  background: #f5f8fa;
+  border-left: 2px solid #bad0d7;
+  padding: 12px 13px;
+  font-size: 12px;
+  color: var(--suave);
+  line-height: 1.7;
+}
+.formulario-acceso form {
+  margin-top: 24px;
+}
+.formulario-acceso form > label {
+  display: block;
+  margin-bottom: 9px;
+}
+.etiqueta-clave {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0 9px;
+}
+.campo-clave {
+  display: flex;
+  position: relative;
+}
+.campo-clave input {
+  padding-right: 45px;
+}
+.campo-clave button {
+  position: absolute;
+  right: 5px;
+  top: 4px;
+}
+.formulario-acceso form > .boton {
+  margin-top: 25px;
+}
+.mensaje-formulario {
+  font-size: 12px;
+  color: #8b743f;
+  margin-top: 17px;
+  line-height: 1.8;
+}
+.separador-texto {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin: 24px 0;
+  color: var(--suave);
+  font-size: 11px;
+}
+.separador-texto::before,
+.separador-texto::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--borde);
+}
+.formulario-acceso > .nota-formulario {
+  font-size: 11px;
+  text-align: center;
+  margin-bottom: 0;
+}
+.nota-formulario {
+  color: var(--suave);
+  font-size: 12px;
+  margin: 17px 0;
+}

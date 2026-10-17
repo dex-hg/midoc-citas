@@ -1,10 +1,88 @@
+@import './estilos/elementos.css';
+@import './estilos/portal.css';
+@import './estilos/panel.css';
+@import './estilos/registros.css';
+@import './estilos/publico.css';
+@import './estilos/acceso.css';
+@import './estilos/agenda.css';
+@import './estilos/adaptable.css';
+
+:root {
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  color: #263849;
+  background: #f5f7f9;
+  font-synthesis: none;
+  --texto: #263849;
+  --suave: #687786;
+  --borde: #e1e7eb;
+  --acento: #087f89;
+  --acento-claro: #eaf5f5;
+}
+
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #f5f7fa;
+  color: var(--texto);
+  background: #f5f7f9;
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
 }
 
-.contenido-inicial {
-  max-width: 48rem;
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+h1,
+h2,
+h3 {
+  color: var(--texto);
+  line-height: 1.3;
+}
+h1 {
+  font-size: 28px;
+  font-weight: 650;
+  letter-spacing: -0.6px;
+}
+h2 {
+  font-size: 17px;
+  font-weight: 650;
+}
+h3 {
+  font-size: 15px;
+  font-weight: 600;
+}
+a {
+  color: var(--acento);
+  text-decoration: none;
+}
+a:hover {
+  color: #065e66;
+}
+button,
+input,
+select {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+:focus-visible {
+  outline: 3px solid #59aeb8;
+  outline-offset: 3px;
+}
+svg {
+  flex-shrink: 0;
+  vertical-align: middle;
 }

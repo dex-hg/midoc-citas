@@ -1,0 +1,182 @@
+.barra-registros {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 24px;
+}
+.barra-registros p {
+  margin-top: 5px;
+  font-size: 12px;
+  color: var(--suave);
+}
+.buscador {
+  border: 1px solid var(--borde);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 12px;
+  border-radius: 5px;
+  color: var(--suave);
+}
+.buscador input {
+  border: 0;
+  background: none;
+  min-width: 0;
+  width: 190px;
+  font-size: 12px;
+  color: var(--texto);
+  outline: 0;
+}
+.buscador:focus-within {
+  outline: 2px solid #59aeb8;
+}
+.buscador input::placeholder {
+  color: var(--suave);
+}
+.filtros {
+  display: flex;
+  gap: 21px;
+  padding: 0 24px;
+  border-bottom: 1px solid var(--borde);
+  overflow-x: auto;
+}
+.filtro {
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  padding: 12px 1px;
+  font-size: 12px;
+  color: var(--suave);
+  white-space: nowrap;
+}
+.filtro.seleccionado {
+  color: var(--acento);
+  border-bottom-color: var(--acento);
+  font-weight: 600;
+}
+.contador-filtro {
+  margin-left: 8px;
+  border-radius: 4px;
+  padding: 1px 6px;
+  background: #ebf1f4;
+  color: var(--suave);
+  font-size: 10px;
+}
+.tabla-registros {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+.tabla-registros th {
+  background: #fafbfd;
+  color: var(--suave);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 13px 18px;
+}
+.tabla-registros td {
+  padding: 21px 18px;
+  border-top: 1px solid #edf1f4;
+  color: var(--suave);
+}
+.tabla-registros th:first-child,
+.tabla-registros td:first-child {
+  padding-left: 24px;
+}
+.titulo-celda {
+  display: block;
+  color: #42596b;
+  font-weight: 600;
+  font-size: 12px;
+}
+.detalle-celda {
+  display: block;
+  color: var(--suave);
+  font-size: 10px;
+  margin-top: 5px;
+}
+.acciones-celda {
+  text-align: right;
+}
+.acciones-celda .enlace-texto {
+  font-size: 11px;
+}
+.accion-no-disponible {
+  color: var(--suave);
+}
+.pie-registros {
+  padding: 13px 24px;
+  border-top: 1px solid var(--borde);
+  font-size: 11px;
+  color: var(--suave);
+}
+.nota-registros {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  font-size: 12px;
+  color: var(--suave);
+  margin-top: 20px;
+}
+.nota-registros svg {
+  margin-top: 2px;
+}
+.filtros-citas {
+  margin-bottom: 23px;
+  padding: 0;
+}
+.lista-citas {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.tarjeta-cita {
+  display: flex;
+  align-items: center;
+  padding: 25px;
+  gap: 24px;
+}
+.cuerpo-tarjeta-cita {
+  flex: 1;
+}
+.titulo-tarjeta-cita {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.titulo-tarjeta-cita h2 {
+  font-size: 19px;
+}
+.cuerpo-tarjeta-cita > p {
+  margin-top: 7px;
+  color: var(--suave);
+  font-size: 13px;
+}
+.cuerpo-tarjeta-cita > .detalle-celda {
+  margin-top: 15px;
+}
+.acciones-cita {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+.acciones-cita .enlace-texto {
+  font-size: 11px;
+}
+.panel-ayuda {
+  padding: 27px;
+  max-width: 900px;
+}
+.panel-ayuda > h2 {
+  margin-bottom: 12px;
+}
+.orientacion-sencilla {
+  display: flex;
+  gap: 10px;
+  color: var(--suave);
+  font-size: 13px;
+  margin-top: 24px;
+}
