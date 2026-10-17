@@ -4,14 +4,16 @@ Sistema web de MiDoc para la gestión administrativa de consultas y citas
 médicas, desarrollado para Análisis y Diseño de Sistemas de Información.
 
 Esta etapa prepara el entorno de desarrollo con React, Flask y Supabase.
-El cliente muestra una pantalla inicial y una página para rutas desconocidas.
+El cliente incluye un inicio de acceso, la propuesta de ingreso y las primeras
+vistas del portal del paciente: resumen, consultas, citas, agenda y ayuda.
+Son vistas de demostración con datos ficticios y sin persistencia.
 El servidor implementa únicamente la comprobación de estado del proceso web.
 
 ## Organización
 
 | Carpeta | Contenido |
 | --- | --- |
-| `client` | React, TypeScript, Vite, Bootstrap, React Router y TanStack Query. |
+| `client` | React, TypeScript, Vite, Bootstrap, React Router, TanStack Query y Lucide. |
 | `server` | Python, Flask, python-dotenv y el SDK oficial de Supabase. |
 | `db` | Indicaciones para trabajar con PostgreSQL administrado por Supabase. |
 
@@ -93,6 +95,7 @@ Desde `client`:
 npm run lint
 npm run typecheck
 npm run build
+npm run format:check
 ```
 
 Las pruebas del servidor comprueban la configuración, el contrato HTTP
@@ -106,5 +109,6 @@ el cliente de pruebas de Flask y valores de prueba, sin consultar el servicio.
 - [Claves de API de Supabase](https://supabase.com/docs/guides/api/api-keys).
 - [Guía de Vite](https://vite.dev/guide/).
 
-La autenticación, los permisos por rol y los módulos de pacientes, consultas,
-pagos, disponibilidad y citas se implementarán en las siguientes etapas.
+Las vistas se pueden recorrer iniciando solo el cliente. La autenticación,
+los permisos por rol y la integración real de pacientes, consultas, pagos,
+disponibilidad y citas se implementarán en las siguientes etapas.
